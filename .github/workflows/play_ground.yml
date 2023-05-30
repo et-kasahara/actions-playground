@@ -17,11 +17,9 @@ jobs:
   check_repo_name:
     runs-on: ubuntu-latest
     steps:
-      - id: repo
-        run: echo "name=${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}" >> $GITHUB_OUTPUT
       - name: Pass or fail
         run: |
-          if [[ ${{ steps.repo.outputs.name }} == ${{ inputs.repo_name }} ]]; then exit 0; else exit 1; fi
+          if [[ ${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/} == ${{ inputs.repo_name }} ]]; then exit 0; else exit 1; fi
 
   build:
     needs: check_repo_name
