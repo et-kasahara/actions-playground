@@ -28,3 +28,6 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
 
+      - name: show GITHUB_REPOSITORY
+        run: |
+          echo ${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}
