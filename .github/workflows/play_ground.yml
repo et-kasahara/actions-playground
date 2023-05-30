@@ -31,3 +31,7 @@ jobs:
       - name: show GITHUB_REPOSITORY
         run: |
           echo ${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/}
+
+      - name: show inputs repo_name
+        run: |
+          echo ${{ inputs.repo_name }} 
