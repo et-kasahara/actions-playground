@@ -19,7 +19,13 @@ jobs:
     steps:
       - name: Pass or fail
         run: |
-          if [[ ${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/} == ${{ inputs.repo_name }} ]]; then exit 0; else exit 1; fi
+          if [[ ${GITHUB_REPOSITORY#${GITHUB_REPOSITORY_OWNER}/} == ${{ inputs.repo_name }} ]]; then
+            echo 'リポジトリ名が一致しました。'
+            exit 0;
+          else
+            echo 'リポジトリの名前が一致しませんでした。入力値: '${{ inputs.repo_name }}
+            exit 1;
+          fi
 
   build:
     needs: check_repo_name
